@@ -1,0 +1,15 @@
+*{margin: 0; padding: 0; box-sizing: border-box; font-family: poppins,sen-serif;}
+body{width: 100%; height: 100vh; background-color: #000; display: flex; justify-content: space-between; align-items: center; }
+.main_bg {width: 100%; max-width: 25%; margin: 0 auto; padding: 30px; background-color: #0eca6c; border-radius: 4px; }
+.search_box { background-color: #fff; padding: 15px; display: flex; justify-content: space-between; align-items: center;border-radius: 5px; overflow: hidden;}
+.search_box input { border: none; background-color: #00000000; flex:1;  outline: none; }
+.search_box  button i { font-size: 30px; }
+.search_box  button  {border: none; background-color: #fff; cursor: pointer;}
+.search_box input {font-family: poppins,sen-serif; font-size: 16px;}
+.main_bg .weather  {text-align: center; color: #fff;}
+.main_bg .weather figure img {width: 100%; max-width: 150px; }
+.main_bg .weather  .temp h1 {font-size: 50px; }
+.main_bg .weather   h3 {font-size: 20px;}
+.weather_details {margin-top: 100px;}
+.weather_details .humdaity_image img {max-width: 40px;} 
+.weather_details, .humdaity  {display: flex; justify-content: space-between; align-items: center; gap: 30px;} 

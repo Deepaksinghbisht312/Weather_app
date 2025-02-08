@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+ <!-- start-header    -->
+<div class="main_bg">
+    <div class="container">
+        <div class="search_box">
+            <input type="text" placeholder="Please enter your city">
+            <button><i class='bx bx-search-alt-2'></i></button>
+        </div>
+    </div>
+    <div class="weather">
+       <figure> <img src="css/images/rain_image.png" alt="rain_image"></figure>
+        <div class="temp"><h1 class="celcius">200.c</h1></div>
+        <div class="city"><h3 class="name">New York</h3></div>
+    </div>
+ 
+    <div class="weather_details">
+        <div class="humdaity">
+            <div class="humdaity_image"><img src="css/images/humidity-icon.png" alt="humidity-icon"></div>
+            <div class="content">
+                <h4 class="hum_percent">53%</h4>
+                <p class="humdity">humdaity</p>
+            </div>
+        </div>
+
+
+        <div class="humdaity">
+            <div class="humdaity_image"><img src="css/images//wind_speed.png" alt="humidity-icon"></div>
+            <div class="content">
+                <h4 class="wind_speed"> 15km/h</h4>
+                <p class="wind_speed_name">wind speed</p>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+
+<script >
+const apiKey = "b1e4ea1b6e7c9a38de0167a23addfe67";
+const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
+
+const searchBox = document.querySelector(".search_box input");
+const searchBtn = document.querySelector(".search_box button");
+ 
+async function checkWeather(city) {
+    const response = await fetch(apiUrl + city + `&units=metric&appid=${apiKey}`);
+    const data = await response.json();
+    console.log(data);
+
+    // Error handling for invalid city
+    if (data.cod === "404") {
+        alert("city ka naam dalo na yrr kya karte ho.");
+        return;
+    }
+
+    // Updating the DOM with weather information
+    document.querySelector(".name").innerHTML = data.name;
+    document.querySelector(".celcius").innerHTML = Math.round(data.main.temp) + "°C";
+    document.querySelector(".hum_percent").innerHTML = data.main.humidity + "%";
+    document.querySelector(".wind_speed").innerHTML = data.wind.speed + "km/h";
+}
+
+searchBtn.addEventListener("click", () => {
+    const city = searchBox.value.trim();
+    if (city) {
+        checkWeather(city);
+    } else {
+        alert("khalo mat chodo ikso kuch na kuch bharo");
+    }
+});
+
+
+
+</script>
+
+</body>
+</html>
